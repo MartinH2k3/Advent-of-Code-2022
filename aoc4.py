@@ -12,3 +12,4 @@ def part2():
 
 print("Part1:", part1())
 print("Part2:", part2())
+

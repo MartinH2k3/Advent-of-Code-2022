@@ -51,4 +51,4 @@ def part2():
     return output[0]
 
 
-print(part2())
+print(f"Part 1: {part1()}\nPart 2: {part2()}")

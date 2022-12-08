@@ -15,4 +15,33 @@ def part1():
     return visible_trees + 4*size - 4
 
 
-print(part1())
+def part2():
+    with open("input.txt") as file:
+        tree_map = [[int(letter) for letter in line] for line in file.read().split("\n")]
+    max_ss = 1  # max scenic score
+    size = len(tree_map)
+    for i in range(size):
+        for j in range(size):
+            cur_ss = 1  # current scenic score
+            k = 1
+            while i+k+1 < size and tree_map[i+k][j] < tree_map[i][j]:
+                k += 1
+            cur_ss *= k
+            k = 1
+            while j+k+1 < size and tree_map[i][j+k] < tree_map[i][j]:
+                k += 1
+            cur_ss *= k
+            k = 1
+            while i-k-1 >= 0 and tree_map[i-k][j] < tree_map[i][j]:
+                k += 1
+            cur_ss *= k
+            k = 1
+            while j-k-1 >= 0 and tree_map[i][j-k] < tree_map[i][j]:
+                k += 1
+            cur_ss *= k
+            if cur_ss > max_ss:
+                max_ss = cur_ss
+    return max_ss
+
+
+print(f"Part 1: {part1()}\nPart 2: {part2()}")

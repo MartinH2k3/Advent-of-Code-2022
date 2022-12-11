@@ -1,6 +1,3 @@
-from time import time
-
-
 class Monke:
     def __init__(self, monkeys):
         self.monkeys: list[Monke] = monkeys
@@ -36,7 +33,7 @@ def part2():
         monkeys[-1].test = int(monkey_input[2].replace("Test:divisibleby", "")), int(monkey_input[3].replace("Iftrue:throwtomonkey", "")), int(monkey_input[4].replace("Iffalse:throwtomonkey", ""))
     for monkey in monkeys:
         monkey.update()
-    for monke_round in range(10000):
+    for monke_round in range(2000):
         for monke in monkeys:
             monke.operation()
     a = sorted(monke.inspected_count for monke in monkeys)

@@ -25,7 +25,7 @@ class Monke:
         self.items.clear()
 
 
-def part1():
+def part2():
     with open("input.txt") as file:
         monkey_inputs = [[j.replace(" ", "") for j in i.split("\n")[1:]] for i in file.read().split("\n\n")]
     monkeys = []
@@ -40,10 +40,7 @@ def part1():
         for monke in monkeys:
             monke.operation()
     a = sorted(monke.inspected_count for monke in monkeys)
-    return a
+    return a[-1] * a[-2]
 
 
-t1 = time()
-print("Part 1: ", part1())
-t2 = time()
-print(t2 - t1)
+print("Part 2: ", part2())

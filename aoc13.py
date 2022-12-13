@@ -30,9 +30,26 @@ def part1():
     return output
 
 
+def bubble_sort(packets):  # I'm just imagining this is the way bubble sort works like, never looked it up, just heard of it
+    errors = 1
+    while errors:
+        errors = 0
+        for index in range(1, len(packets)):
+            if not compare(packets[index-1], packets[index]):
+                errors += 1
+                robert = packets[index]
+                packets[index] = packets[index-1]
+                packets[index-1] = robert
+    return packets
+
+
 def part2():
     with open("input.txt") as file:
-        packets = [i.split("\n") for i in file.read().replace("\n\n", "")]
+        packets = [ast.literal_eval(i) for i in file.read().replace("\n\n", "\n").split("\n")]
+    packets.append([[2]])
+    packets.append([[6]])
+    packets = bubble_sort(packets)
+    return (packets.index([[2]])+1) * (packets.index([[6]])+1)
 
 
-print(part1())
+print(f"Part 1: {part1()}\nPart 2: {part2()}")

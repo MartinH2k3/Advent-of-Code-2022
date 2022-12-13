@@ -25,10 +25,14 @@ def part1():
     output = 0
     for index, pair in enumerate(pairs):
         if compare(pair[0], pair[1]):
-            print(index+1)
             output += index+1
 
     return output
+
+
+def part2():
+    with open("input.txt") as file:
+        packets = [i.split("\n") for i in file.read().replace("\n\n", "")]
 
 
 print(part1())
